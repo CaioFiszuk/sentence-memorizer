@@ -1,0 +1,18 @@
+.suggestions-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.suggestion-list__item{
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.suggestions-list__icon{
+    cursor: pointer;
+}
+
+.suggestions-list__icon:hover{
+   color: rgba(240, 248, 255, 0.407);
+}

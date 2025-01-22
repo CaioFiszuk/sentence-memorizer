@@ -1,0 +1,29 @@
+.page {
+    color: aliceblue;
+    background-color: royalblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 200px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+  }
+  
+  @media screen and (max-width: 912px) {
+    .page {
+      padding: 0 50px;
+    }
+  }
+  
+  @media screen and (min-width: 360px) and (max-width: 767px) {
+    .page {
+      padding: 0;
+    }
+  }
+  
+  @media screen and (min-width: 320px) and (max-width: 359px) {
+    .page {
+      padding: 0;
+    }
+  }
+  

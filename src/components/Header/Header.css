@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 30px;
+    font-size: 20px;
+    border-bottom: 2px solid aliceblue;
+}
+
+.header__title {
+    margin: 0;
+    padding: 0;
+}
+
+.header__link {
+  text-decoration: none;
+  color: aliceblue;
+}

@@ -1,0 +1,20 @@
+.navigation__links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    font-size: 20px;
+    line-height: 25px;
+    justify-content: center;
+}
+
+.navigation__link{
+    background-color: transparent;
+    border: none;
+    color: aliceblue;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.navigation__link:hover{
+   color: rgb(202, 228, 251);
+}
