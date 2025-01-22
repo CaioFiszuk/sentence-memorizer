@@ -2,6 +2,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 880px;
 }
 
 .sentence-list__item{
@@ -16,6 +17,22 @@
     cursor: pointer;
 }
 
+.sentence-list__item:hover {
+    color: rgb(202, 228, 251);
+}
+
 .sentence-list__icon:hover{
    color: rgba(240, 248, 255, 0.407);
 }
+
+@media screen and (min-width: 768px) and (max-width: 1010px) {
+    .sentence-list {
+      width: 590px;
+    }
+  }
+
+@media screen and (min-width: 360px) and (max-width: 767px) {
+    .sentence-list {
+        width: 400px;
+    }
+  }

@@ -2,7 +2,7 @@ import './SentenceList.css';
 import { Link } from 'react-router-dom';
 
 function SentenceList() {
-  const sentences = ['lorem ipsum amet labore', 'rather fail together'];
+  const sentences = ['lorem ipsum amet labore, odio massimum condimentum culex romanum magnus sed puer apis pertinax', 'rather fail together', 'lorem ipsum amet labore, odio massimum condimentum culex romanum magnus sed puer apis pertinax', 'rather fail together', 'lorem ipsum amet labore, odio massimum condimentum culex romanum magnus sed puer apis pertinax', 'rather fail together', 'lorem ipsum amet labore, odio massimum condimentum culex romanum magnus sed puer apis pertinax', 'rather fail together'];
 
     return (
       <div>
@@ -25,7 +25,7 @@ function SentenceList() {
           </ul>
         ):
         (
-          <p>Você ainda não tem nenhuma frase</p>
+          <p className='sentence-list__paragraph'>Você ainda não tem nenhuma frase</p>
         )}
       </div>
     )

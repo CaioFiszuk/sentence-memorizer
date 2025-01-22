@@ -16,16 +16,16 @@ function Navigation() {
 
   return (
     <nav>
-      <ul className='navigation__links'>
-        <li>
+      <ul className='navigation'>
+        <li className='navigation__item'>
           <button 
-            className='navigation__link' 
             onClick={openCreateSentenceModal}
+            className='navigation__button'
           >
             Criar frase
           </button>
         </li>
-        <li>
+        <li className='navigation__item'>
           <NavLink
            to='/suggestions'
            className='navigation__link'
@@ -33,15 +33,15 @@ function Navigation() {
             Sugestões
           </NavLink>
           </li>
-        <li>
+        <li className='navigation__item'>
           <button 
-            className='navigation__link' 
             onClick={openEditProfileModalIsOpen}
+            className='navigation__button'
           >
             Editar Perfil
           </button>
         </li>
-        <li className='navigation__link'>Sair</li>
+        <li className='navigation__item'>Sair</li>
       </ul>
 
       <Popup 
