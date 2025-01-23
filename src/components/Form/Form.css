@@ -37,6 +37,29 @@
     align-self: center;
 }
 
+.form__button-disabled {
+    background-color: aliceblue;
+    border: 1px solid #000000;
+    color: #00000020;
+    cursor: auto;
+}
+
 .form__button:hover {
     background-color: rgb(49, 80, 173);
 }
+
+.form__button-disabled:hover {
+    background-color: aliceblue;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1010px) {
+    .form__button {
+      width: 300px;
+    }
+  }
+
+@media screen and (min-width: 360px) and (max-width: 767px) {
+    .form__button {
+        width: 250px;
+    }
+  }

@@ -33,3 +33,15 @@
   .popup__icon:hover {
     color: #ffffff3b;
   }
+
+  @media screen and (min-width: 768px) and (max-width: 1010px) {
+    .popup__content {
+      width: 300px;
+    }
+  }
+
+@media screen and (min-width: 360px) and (max-width: 767px) {
+    .popup__content {
+        width: 250px;
+    }
+  }
