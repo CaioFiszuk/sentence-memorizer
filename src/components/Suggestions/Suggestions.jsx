@@ -1,21 +1,21 @@
 import './Suggestions.css';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { PiPencil } from 'react-icons/pi';
+import { quoteApi } from '../../utils/QuoteApi';
 
 function Suggestions() {
   const [quotes, setQuotes] = useState([]);
 
   const getQuotes = async()=>{
 
-     const response = await axios.get("http://api.quotable.io/quotes/random?limit=10");
+     const response = await quoteApi.getQuotes();
 
-     setQuotes(response.data);
-     console.log(response.data);
+     setQuotes(response);
+     console.log(response);
   }
 
   useEffect(()=>{
-    getQuotes()
+    getQuotes();
   }, []);
   return(
     <div>

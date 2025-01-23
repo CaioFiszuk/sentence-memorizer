@@ -2,6 +2,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 880px;
 }
 
 .suggestion-list__item{
@@ -16,3 +17,16 @@
 .suggestions-list__icon:hover{
    color: rgba(240, 248, 255, 0.407);
 }
+
+
+@media screen and (min-width: 768px) and (max-width: 1010px) {
+    .suggestions-list {
+      width: 590px;
+    }
+  }
+
+@media screen and (min-width: 360px) and (max-width: 767px) {
+    .suggestions-list {
+        width: 400px;
+    }
+  }
