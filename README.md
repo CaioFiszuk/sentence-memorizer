@@ -1,8 +1,26 @@
-# React + Vite
+# Sentence Memorizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sentence-Memorizer é um site desenvolvido para ajudar usuários a memorizar frases.
 
-Currently, two official plugins are available:
+### Funcionalidades principais:
+- Adicionar frases personalizadas para memorização.
+- Buscar frases motivacionais ou inspiradoras de uma API pública.
+- Criar listas de frases para estudos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+### Uso da API `Quotable`
+
+Este projeto utiliza a API pública [Quotable](http://api.quotable.io) para buscar frases famosas e inspiradoras. 
+
+#### Endpoints utilizados:
+- **`GET /random`**: Retorna uma citação aleatória.
+
+#### Exemplos:
+- Obter uma citação aleatória: 
+  ```bash
+  curl http://api.quotable.io/random
+
+#### Documentação
+Para mais detalhes sobre os endpoints disponíveis, consulte a documentação oficial.
+https://github.com/lukePeavey/quotable  
