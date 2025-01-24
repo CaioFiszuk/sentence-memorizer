@@ -57,7 +57,7 @@ function Navigation() {
           />
 
         <MdClose 
-          className='popup__icon'
+          className='popup__close-icon'
           onClick={closeCreateSentenceModal}
         />
       </Popup>
@@ -75,7 +75,7 @@ function Navigation() {
           />
 
         <MdClose 
-          className='popup__icon'
+          className='popup__close-icon'
           onClick={closeEditProfileModalIsOpen}
         />
       </Popup>
