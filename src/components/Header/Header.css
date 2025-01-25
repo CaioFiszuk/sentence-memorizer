@@ -14,8 +14,8 @@
 }
 
 .header__link {
-text-decoration: none;
-color: aliceblue;
+  text-decoration: none;
+  color: aliceblue;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1010px) {

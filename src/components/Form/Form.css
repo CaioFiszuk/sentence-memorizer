@@ -1,8 +1,10 @@
+@import url("../../vendor/fonts.css");
+
 .form{
     display: flex;
     flex-direction: column;
     gap: 30px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: "Inter Regular";
 }
 
 .form__title {

@@ -1,5 +1,7 @@
+@import url("../../vendor/fonts.css");
+
 .footer {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: "Inter Regular";
     padding: 20px;
     color: aliceblue;
     font-size: 18px;
