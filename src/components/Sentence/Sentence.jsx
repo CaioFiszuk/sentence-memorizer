@@ -36,8 +36,6 @@ function Sentence() {
   const openResultModal = () => {
     setIsCorrect(inputValue.trim().toLowerCase() === hiddenWord.toLowerCase());
     setResultModalIsOpen(true);
-
-    console.log(hiddenWord + inputValue)
   };
 
   const closeResultModal = () => {

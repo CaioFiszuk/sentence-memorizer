@@ -20,6 +20,15 @@ function App() {
     );
   };
 
+  const handleUpdateQuote = (indexToUpdate, newQuote) => {
+    setSelectedQuotes((prevQuotes) => {
+      const updatedQuotes = [...prevQuotes];
+      updatedQuotes[indexToUpdate] = newQuote;
+  
+      return updatedQuotes;
+    });
+  }
+
   return (
     <div className='page'>
       <Routes>
@@ -30,6 +39,7 @@ function App() {
               <Header />
               <Main 
                 selectedQuotes={selectedQuotes} onDeleteQuote={handleDeleteQuote}
+                onUpdateQuote={handleUpdateQuote}
               />
               <Footer />
           </>

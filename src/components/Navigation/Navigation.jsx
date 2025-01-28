@@ -7,11 +7,15 @@ import { NavLink } from 'react-router-dom';
 
 function Navigation() {
   const [createSentenceModalIsOpen, setCreateSentenceModalIsOpen] = useState(false);
+  
   const [editProfileModalIsOpen, setEditProfileModalIsOpen] = useState(false);
 
   const openCreateSentenceModal = () => setCreateSentenceModalIsOpen(true);
+
   const closeCreateSentenceModal = () => setCreateSentenceModalIsOpen(false);
+
   const openEditProfileModalIsOpen = () => setEditProfileModalIsOpen(true);
+
   const closeEditProfileModalIsOpen = () => setEditProfileModalIsOpen(false);
 
   return (
