@@ -1,7 +1,9 @@
 import './SentenceList.css';
 import { Link } from 'react-router-dom';
+import { BiTrash } from 'react-icons/bi';
+import { BiPencil } from 'react-icons/bi';
 
-function SentenceList({selectedQuotes = []}) {
+function SentenceList({selectedQuotes = [], onDeleteQuote}) {
 
     return (
       <div>
@@ -9,9 +11,14 @@ function SentenceList({selectedQuotes = []}) {
         <ul className="sentence-list">
           {selectedQuotes.map((quote, index) => (
             <li key={index} className="sentence-list__item">
-              <Link className="sentence-list__item" to="/sentence">
-                {quote}
-              </Link>
+              <Link className="sentence-list__link" to="/sentence">
+                {`${quote}`}
+              </Link> 
+              <BiTrash 
+                className='sentence-list__icon'
+                onClick={() => onDeleteQuote(index)}
+              />
+              <BiPencil className='sentence-list__icon'/>
             </li>
           ))}
         </ul>
@@ -20,6 +27,6 @@ function SentenceList({selectedQuotes = []}) {
       )}
     </div>
     )
-  }
+}
   
   export default SentenceList;

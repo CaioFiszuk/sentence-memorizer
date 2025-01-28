@@ -1,6 +1,6 @@
 .sentence-list{
     list-style: none;
-    padding: 0;
+    padding: 7px 0 0 0;
     margin: 0;
     width: 880px;
 }
@@ -9,6 +9,12 @@
     font-size: 16px;
     margin-top: 15px;
     text-align: center;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.sentence-list__link {
     text-decoration: none;
     color: aliceblue;
 }
@@ -17,7 +23,7 @@
     cursor: pointer;
 }
 
-.sentence-list__item:hover {
+.sentence-list__link:hover {
     color: rgb(202, 228, 251);
 }
 

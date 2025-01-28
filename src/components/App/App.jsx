@@ -14,6 +14,12 @@ function App() {
     setSelectedQuotes((prevQuotes) => [...prevQuotes, newQuote]);
   };
 
+  const handleDeleteQuote = (indexToDelete) => {
+    setSelectedQuotes((prevQuotes) =>
+      prevQuotes.filter((_, index) => index !== indexToDelete)
+    );
+  };
+
   return (
     <div className='page'>
       <Routes>
@@ -22,7 +28,9 @@ function App() {
          element={
           <>
               <Header />
-              <Main selectedQuotes={selectedQuotes}/>
+              <Main 
+                selectedQuotes={selectedQuotes} onDeleteQuote={handleDeleteQuote}
+              />
               <Footer />
           </>
          }
