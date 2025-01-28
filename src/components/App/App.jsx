@@ -1,12 +1,18 @@
 import './App.css';
+import { useState } from 'react';
 import  Header  from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import Suggestions from '../Suggestions/Suggestions';
 import Sentence from '../Sentence/Sentence';
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
+  const [selectedQuotes, setSelectedQuotes] = useState([]);
+
+  const handleAddQuote = (newQuote) => {
+    setSelectedQuotes((prevQuotes) => [...prevQuotes, newQuote]);
+  };
 
   return (
     <div className='page'>
@@ -16,7 +22,7 @@ function App() {
          element={
           <>
               <Header />
-              <Main />
+              <Main selectedQuotes={selectedQuotes}/>
               <Footer />
           </>
          }
@@ -27,7 +33,7 @@ function App() {
           element={
           <>
               <Header />
-              <Suggestions />
+              <Suggestions onSelectQuote={handleAddQuote}/>
               <Footer />
           </>
           }

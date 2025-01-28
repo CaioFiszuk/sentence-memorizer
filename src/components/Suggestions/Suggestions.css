@@ -11,6 +11,7 @@
 }
 
 .suggestions-list__icon{
+    padding-left: 7px;
     cursor: pointer;
 }
 

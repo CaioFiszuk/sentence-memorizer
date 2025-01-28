@@ -1,12 +1,12 @@
 import './Main.css';
 import SentenceList from '../SentenceList/SentenceList';
 
-function Main() {
+function Main({selectedQuotes}) {
 
     return (
       <main>
          <p className='main__greeting'>Bom dia John</p>
-         <SentenceList />
+         <SentenceList selectedQuotes={selectedQuotes}/>
       </main>
     )
   }
