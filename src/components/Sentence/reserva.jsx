@@ -18,12 +18,12 @@ function Sentence() {
   const [isValid, setIsValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const location = useLocation();
-  const { quote } = location.state || {};
+  const { quote } = location.state || '';
+
+  const sentence = "This Is My First Day and I am Indian and I Work at a Gas Station";
 
   const generateNewSentence = () => {
-    const cleanedQuote = quote.replace(/[.,;!?]/g, '');
-
-    const words = cleanedQuote.split(" ");
+    const words = sentence.split(" ");
     const randomNumber = Math.floor(Math.random() * words.length);
     const crypticMessage = [...words];
     const hidden = crypticMessage[randomNumber];
@@ -36,8 +36,6 @@ function Sentence() {
   const openResultModal = () => {
     setIsCorrect(inputValue.trim().toLowerCase() === hiddenWord.toLowerCase());
     setResultModalIsOpen(true);
-
-    console.log(hiddenWord + inputValue)
   };
 
   const closeResultModal = () => {
@@ -54,10 +52,8 @@ function Sentence() {
   };
 
   useEffect(() => {
-    if (quote) {
-      generateNewSentence();
-    }
-  }, [quote]);
+    generateNewSentence();
+  }, [sentence]);
 
   return (
     <div>

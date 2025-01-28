@@ -11,8 +11,12 @@ function SentenceList({selectedQuotes = [], onDeleteQuote}) {
         <ul className="sentence-list">
           {selectedQuotes.map((quote, index) => (
             <li key={index} className="sentence-list__item">
-              <Link className="sentence-list__link" to="/sentence">
-                {`${quote}`}
+              <Link 
+                className="sentence-list__link" 
+                to="/sentence"
+                state={{ quote }}
+              >
+                {quote}
               </Link> 
               <BiTrash 
                 className='sentence-list__icon'
