@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 
-function Navigation({onAddQuote}) {
+function Navigation({onAddQuote, onEditProfile}) {
   const [createSentenceModalIsOpen, setCreateSentenceModalIsOpen] = useState(false);
   
   const [editProfileModalIsOpen, setEditProfileModalIsOpen] = useState(false);
@@ -23,6 +23,11 @@ function Navigation({onAddQuote}) {
   const createNewSentence = (newSentence) => {
     onAddQuote(newSentence);
     closeCreateSentenceModal();
+  }
+
+  const EditProfile = (newUserName) => {
+     onEditProfile(newUserName);
+     closeEditProfileModalIsOpen();
   }
 
   return (
@@ -85,6 +90,8 @@ function Navigation({onAddQuote}) {
            inputName='username'
            buttonName='Editar'
            inputType='text'
+           initialValue=''
+           handleForm={EditProfile}
           />
 
         <MdClose 

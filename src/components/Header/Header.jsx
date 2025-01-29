@@ -2,7 +2,7 @@ import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import { NavLink } from 'react-router-dom';
 
-function Header({onAddQuote}) {
+function Header({onAddQuote, onEditProfile}) {
 
     return (
       <header className='header'>
@@ -12,7 +12,10 @@ function Header({onAddQuote}) {
           </NavLink>
         </h1>
 
-        <Navigation onAddQuote={onAddQuote}/>
+        <Navigation 
+          onAddQuote={onAddQuote} 
+          onEditProfile={onEditProfile}
+        />
       </header>
     );
   }

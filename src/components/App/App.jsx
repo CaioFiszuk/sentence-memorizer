@@ -10,6 +10,8 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   const [selectedQuotes, setSelectedQuotes] = useState([]);
 
+  const [userName, setUserName] = useState('john');
+
   const handleAddQuote = (newQuote) => {
     setSelectedQuotes((prevQuotes) => [...prevQuotes, newQuote]);
   };
@@ -29,6 +31,10 @@ function App() {
     });
   }
 
+  const handleEditProfile = (newUserName) => {
+      setUserName(newUserName)
+  }
+
   return (
     <div className='page'>
       <Routes>
@@ -36,10 +42,11 @@ function App() {
          path='/'
          element={
           <>
-              <Header onAddQuote={handleAddQuote}/>
+              <Header onAddQuote={handleAddQuote} onEditProfile={handleEditProfile}/>
               <Main 
                 selectedQuotes={selectedQuotes} onDeleteQuote={handleDeleteQuote}
                 onUpdateQuote={handleUpdateQuote}
+                userName={userName}
               />
               <Footer />
           </>
