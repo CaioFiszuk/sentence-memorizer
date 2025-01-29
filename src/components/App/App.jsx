@@ -36,7 +36,7 @@ function App() {
          path='/'
          element={
           <>
-              <Header />
+              <Header onAddQuote={handleAddQuote}/>
               <Main 
                 selectedQuotes={selectedQuotes} onDeleteQuote={handleDeleteQuote}
                 onUpdateQuote={handleUpdateQuote}

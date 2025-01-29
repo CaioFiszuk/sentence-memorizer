@@ -5,18 +5,25 @@ import { useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 
-function Navigation() {
+function Navigation({onAddQuote}) {
   const [createSentenceModalIsOpen, setCreateSentenceModalIsOpen] = useState(false);
   
   const [editProfileModalIsOpen, setEditProfileModalIsOpen] = useState(false);
 
-  const openCreateSentenceModal = () => setCreateSentenceModalIsOpen(true);
+  const openCreateSentenceModal = () => {
+    setCreateSentenceModalIsOpen(true);
+  }
 
   const closeCreateSentenceModal = () => setCreateSentenceModalIsOpen(false);
 
   const openEditProfileModalIsOpen = () => setEditProfileModalIsOpen(true);
 
   const closeEditProfileModalIsOpen = () => setEditProfileModalIsOpen(false);
+
+  const createNewSentence = (newSentence) => {
+    onAddQuote(newSentence);
+    closeCreateSentenceModal();
+  }
 
   return (
     <nav>
@@ -58,6 +65,8 @@ function Navigation() {
            inputName='sentence'
            buttonName='Criar'
            inputType='text'
+           initialValue=''
+           handleForm={createNewSentence}
           />
 
         <MdClose 
