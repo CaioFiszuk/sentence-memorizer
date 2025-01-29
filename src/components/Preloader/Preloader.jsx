@@ -4,7 +4,7 @@ function Preloader() {
 
   return (
     <div>
-        
+      <i className="circle-preloader"></i>
     </div>
   );
 }
