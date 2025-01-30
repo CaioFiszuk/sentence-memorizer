@@ -1,6 +1,6 @@
 # Sentence Memorizer
 
-## https://sentence-memorizer-frontend.vercel.app/
+## https://sentence-memorizer-frontend-git-stag-a1ebad-caio-lopes-projects.vercel.app/
 
 Sentence-Memorizer é um site desenvolvido para ajudar usuários a memorizar frases.
 
