@@ -1,11 +1,10 @@
 import './Main.css';
 import SentenceList from '../SentenceList/SentenceList';
 
-function Main({selectedQuotes, onDeleteQuote, onUpdateQuote, userName}) {
+function Main({selectedQuotes, onDeleteQuote, onUpdateQuote}) {
 
     return (
       <main className='main'>
-         <p className='main__greeting'>Bom dia {userName}</p>
          <SentenceList 
            selectedQuotes={selectedQuotes}
            onDeleteQuote={onDeleteQuote}

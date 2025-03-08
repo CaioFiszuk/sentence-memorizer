@@ -1,9 +1,9 @@
 const Sentence = require("../models/sentence");
 
 module.exports.getSentences = (req, res) => {
-  const userId = req.user.id; // Certifique-se de que o middleware de autenticação adiciona `user` ao `req`
+  const userId = req.user.id;
 
-  Sentence.find({ owner: userId }) // Filtrar sentenças pelo campo `owner`
+  Sentence.find({ owner: userId })
     .then((sentences) => {
       res.send({
         data: sentences,
@@ -64,28 +64,30 @@ module.exports.deleteSentence = (req, res) => {
 };
 
 module.exports.updateSentence = (req, res) => {
-  console.log(req.params.id)
   Sentence.findByIdAndUpdate(
     req.params.id,
-    {content: req.body.content},
+    { content: req.body.content },
     {
       new: true,
-      runValidators: true,
-      upsert: true
+      runValidators: true
     }
   )
-  .orFail(()=>{
-    const error = new Error('Essa frase não existe no seu servidor para ser atualizada');
-    error.statusCode = 404;
-    throw error;
+  .then(sentence => {
+    if (!sentence) {
+      const error = new Error('Essa frase não existe no seu servidor para ser atualizada');
+      error.statusCode = 404;
+      throw error;
+    }
+    res.send({ data: sentence });
   })
-  .then(sentence => res.send({ data: sentence }))
-  .catch(err =>  {
-   const statusCode = err.statusCode || 500;
-   const message = statusCode === 500
-     ? 'Houve um erro no servidor interno'
-     : err.message;
+  .catch(err => {
+    console.error('Erro ao atualizar frase:', err);
+    const statusCode = err.statusCode || 500;
+    const message = statusCode === 500
+      ? 'Houve um erro no servidor interno'
+      : err.message;
 
-   res.status(statusCode).send({ message });
- });
-}
+    res.status(statusCode).send({ message });
+  });
+};
+

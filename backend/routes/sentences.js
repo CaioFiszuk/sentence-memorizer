@@ -5,7 +5,6 @@ const { createSentence, getSentences, getSentence, deleteSentence, updateSentenc
 router.post('/', auth, createSentence);
 router.get('/', auth, getSentences);
 router.get('/:id', getSentence);
-//router.get('/sentences/me', getSentenceByUser);
 router.delete('/:id', deleteSentence);
 router.patch('/:id', updateSentence);
 
