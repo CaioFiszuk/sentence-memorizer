@@ -13,9 +13,12 @@ import * as auth from "../../utils/auth";
 import * as token from '../../utils/token';
 import { api } from '../../utils/api';
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { currentUserContext } from '../../contexts/CurrentUserContext';
 
 function App() {
   const [sentences, setSentences] = useState([]);
+
+  const [currentUser, setCurrentUser] = useState(null);
 
   const [selectedQuotes, setSelectedQuotes] = useState([]);
 
@@ -46,7 +49,6 @@ function App() {
     api.getSentences()
     .then((data)=>{
       setSentences(data.data);
-      console.log(data.data)
      })
      .catch((error) => console.error("Erro ao buscar os livros:", error));
   }
@@ -75,6 +77,7 @@ function App() {
           .then(() => {
             setIsLoggedIn(true);
             navigate("/");
+            getAllSentences();
           });
       }
     })
@@ -94,8 +97,9 @@ function App() {
     const jwt = token.getToken();
     if (jwt) {
       auth.getUserInfo(jwt)
-        .then(() => {
+        .then((data) => {
           setIsLoggedIn(true);
+          setCurrentUser(data.data._id);
           localStorage.setItem("isLoggedIn", "true");
         })
         .catch(() => {
@@ -110,12 +114,18 @@ function App() {
 
   return (
     <div className='page'>
+
+      <currentUserContext.Provider value={currentUser}>
       <Routes>
         <Route 
          path='/'
          element={
           <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Header onAddQuote={handleAddQuote} handleSignOut={signOut}/>
+              <Header 
+                onAddQuote={handleAddQuote} 
+                handleSignOut={signOut}
+                setSentences={setSentences}
+                />
               <Main 
                 selectedQuotes={selectedQuotes} 
                 onDeleteQuote={handleDeleteQuote}
@@ -131,7 +141,10 @@ function App() {
           path='/suggestions'
           element={
           <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Header handleSignOut={signOut}/>
+              <Header 
+                handleSignOut={signOut}
+                setSentences={setSentences}
+              />
               <Suggestions onSelectQuote={handleAddQuote}/>
               <Footer />
           </ProtectedRoute>
@@ -176,6 +189,8 @@ function App() {
             }
           />
       </Routes>
+      </currentUserContext.Provider>
+
     </div>
   )
 }

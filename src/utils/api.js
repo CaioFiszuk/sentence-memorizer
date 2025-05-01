@@ -24,14 +24,13 @@ class Api {
         });
   }
 
-    createSentence(sentenceData) {
-      const { content, owner } = sentenceData;
+    createSentence(content, owner) {
 
       if (!content || !owner) {
         return Promise.reject("Todos os campos são obrigatórios.");
       }
 
-       return axios.post(`${this._baseURL}/sentences`, sentenceData, { headers: this._getAuthorizationHeaders() })
+       return axios.post(`${this._baseURL}/sentences`, {content, owner}, { headers: this._getAuthorizationHeaders() })
        .then((res) => {
         return res.data;
       })
