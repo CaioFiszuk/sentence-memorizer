@@ -26,11 +26,11 @@ function App() {
 
   const navigate = useNavigate();
 
-  const handleDeleteQuote = (indexToDelete) => {
+  /*const handleDeleteQuote = (indexToDelete) => {
     setSelectedQuotes((prevQuotes) =>
       prevQuotes.filter((_, index) => index !== indexToDelete)
     );
-  };
+  };*/
 
   const handleUpdateQuote = (indexToUpdate, newQuote) => {
     setSelectedQuotes((prevQuotes) => {
@@ -123,9 +123,9 @@ function App() {
                 />
               <Main 
                 selectedQuotes={selectedQuotes} 
-                onDeleteQuote={handleDeleteQuote}
                 onUpdateQuote={handleUpdateQuote}
                 sentences={sentences}
+                setSentences={setSentences}
               />
               <Footer />
           </ProtectedRoute>
