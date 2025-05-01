@@ -2,7 +2,7 @@ import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import { NavLink } from 'react-router-dom';
 
-function Header({onAddQuote, onEditProfile}) {
+function Header({onAddQuote, handleSignOut}) {
 
     return (
       <header className='header'>
@@ -14,8 +14,10 @@ function Header({onAddQuote, onEditProfile}) {
 
         <Navigation 
           onAddQuote={onAddQuote} 
-          onEditProfile={onEditProfile}
+          handleSignOut={handleSignOut}
         />
+
+        
       </header>
     );
   }

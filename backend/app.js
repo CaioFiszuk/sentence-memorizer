@@ -5,10 +5,10 @@ const userRoutes = require('./routes/users');
 const sentencesRoutes = require('./routes/sentences');
 const app = express();
 //const { requestLogger, errorLogger } = require('./middleware/logger');
-//require("dotenv").config();
+require("dotenv").config();
 
 app.use(cors());
-app.options('*', cors());
+//app.options('*', cors());
 app.use(express.json());
 
 mongoose.connect("mongodb://localhost:27017/memorizer")

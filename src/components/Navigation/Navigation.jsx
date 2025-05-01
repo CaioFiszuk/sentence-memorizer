@@ -5,10 +5,8 @@ import { useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 
-function Navigation({onAddQuote, onEditProfile}) {
+function Navigation({onAddQuote, handleSignOut}) {
   const [createSentenceModalIsOpen, setCreateSentenceModalIsOpen] = useState(false);
-  
-  const [editProfileModalIsOpen, setEditProfileModalIsOpen] = useState(false);
 
   const openCreateSentenceModal = () => {
     setCreateSentenceModalIsOpen(true);
@@ -16,18 +14,9 @@ function Navigation({onAddQuote, onEditProfile}) {
 
   const closeCreateSentenceModal = () => setCreateSentenceModalIsOpen(false);
 
-  const openEditProfileModalIsOpen = () => setEditProfileModalIsOpen(true);
-
-  const closeEditProfileModalIsOpen = () => setEditProfileModalIsOpen(false);
-
   const createNewSentence = (newSentence) => {
     onAddQuote(newSentence);
     closeCreateSentenceModal();
-  }
-
-  const EditProfile = (newUserName) => {
-     onEditProfile(newUserName);
-     closeEditProfileModalIsOpen();
   }
 
   return (
@@ -49,15 +38,10 @@ function Navigation({onAddQuote, onEditProfile}) {
             Sugestões
           </NavLink>
           </li>
-        <li className='navigation__item'>
-          <button 
-            onClick={openEditProfileModalIsOpen}
-            className='navigation__button'
-          >
-            Editar Perfil
-          </button>
+
+          <li className='navigation__item'>
+          <button className='navigation__button' onClick={handleSignOut}>Sair</button>
         </li>
-        <li className='navigation__item'>Sair</li>
       </ul>
 
       <Popup 
@@ -80,27 +64,15 @@ function Navigation({onAddQuote, onEditProfile}) {
         />
       </Popup>
 
-      <Popup 
-        isOpen={editProfileModalIsOpen} 
-        onClose={closeEditProfileModalIsOpen}>
-         
-         <Form 
-           formTitle='Editar Perfil' 
-           placeholder='Nome'
-           inputName='username'
-           buttonName='Editar'
-           inputType='text'
-           initialValue=''
-           handleForm={EditProfile}
-          />
-
-        <MdClose 
-          className='popup__close-icon'
-          onClick={closeEditProfileModalIsOpen}
-        />
-      </Popup>
     </nav>
   );
 }
 
 export default Navigation;
+
+
+/**
+ *         <li className='navigation__item'>
+          <button onClick={signOut}>Sair</button>
+        </li>
+ */

@@ -28,9 +28,9 @@ module.exports.getAllUsers = (req, res, next) => {
 }
 
 module.exports.createUser = (req, res, next) => {
-  const { name, email, password, ...data } = req.body;
+  const { username, email, password, ...data } = req.body;
 
-  if (!name || !email || !password) {
+  if (!username || !email || !password) {
     const error = new Error('Dados Inválidos');
     error.statusCode = 400;
     throw error;
@@ -38,7 +38,7 @@ module.exports.createUser = (req, res, next) => {
 
   bcrypt.hash(password, 10)
   .then(hash => User.create({
-    name,
+    username,
     email,
     password: hash,
     ...data
