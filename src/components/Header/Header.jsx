@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { api } from '../../utils/api';
 import { currentUserContext } from '../../contexts/CurrentUserContext';
 
-function Header({/*onAddQuote,*/ handleSignOut, setSentences}) {
+function Header({ handleSignOut, setSentences}) {
 
   const [createSentenceModalIsOpen, setCreateSentenceModalIsOpen] = useState(false);
 

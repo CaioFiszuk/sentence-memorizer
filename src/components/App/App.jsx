@@ -26,10 +26,6 @@ function App() {
 
   const navigate = useNavigate();
 
-  const handleAddQuote = (newQuote) => {
-    setSelectedQuotes((prevQuotes) => [...prevQuotes, newQuote]);
-  };
-
   const handleDeleteQuote = (indexToDelete) => {
     setSelectedQuotes((prevQuotes) =>
       prevQuotes.filter((_, index) => index !== indexToDelete)
@@ -122,7 +118,6 @@ function App() {
          element={
           <ProtectedRoute isLoggedIn={isLoggedIn}>
               <Header 
-                onAddQuote={handleAddQuote} 
                 handleSignOut={signOut}
                 setSentences={setSentences}
                 />
@@ -145,7 +140,7 @@ function App() {
                 handleSignOut={signOut}
                 setSentences={setSentences}
               />
-              <Suggestions onSelectQuote={handleAddQuote}/>
+              <Suggestions setSentences={setSentences}/>
               <Footer />
           </ProtectedRoute>
           }
