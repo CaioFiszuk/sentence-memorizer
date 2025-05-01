@@ -11,9 +11,12 @@ import Register from '../Register/Register';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import * as auth from "../../utils/auth";
 import * as token from '../../utils/token';
+import { api } from '../../utils/api';
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 function App() {
+  const [sentences, setSentences] = useState([]);
+
   const [selectedQuotes, setSelectedQuotes] = useState([]);
 
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn") === "true");
@@ -37,6 +40,15 @@ function App() {
   
       return updatedQuotes;
     });
+  }
+
+  const getAllSentences = () => {
+    api.getSentences()
+    .then((data)=>{
+      setSentences(data.data);
+      console.log(data.data)
+     })
+     .catch((error) => console.error("Erro ao buscar os livros:", error));
   }
 
   const handleRegistration = ({
@@ -92,6 +104,8 @@ function App() {
           localStorage.removeItem("isLoggedIn");
         });
     }
+
+    getAllSentences();
   }, []);
 
   return (
@@ -103,8 +117,10 @@ function App() {
           <ProtectedRoute isLoggedIn={isLoggedIn}>
               <Header onAddQuote={handleAddQuote} handleSignOut={signOut}/>
               <Main 
-                selectedQuotes={selectedQuotes} onDeleteQuote={handleDeleteQuote}
+                selectedQuotes={selectedQuotes} 
+                onDeleteQuote={handleDeleteQuote}
                 onUpdateQuote={handleUpdateQuote}
+                sentences={sentences}
               />
               <Footer />
           </ProtectedRoute>

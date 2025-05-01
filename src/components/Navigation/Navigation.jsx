@@ -4,8 +4,10 @@ import Form from '../Form/Form';
 import { useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
+//import { api } from '../../utils/api';
 
 function Navigation({onAddQuote, handleSignOut}) {
+
   const [createSentenceModalIsOpen, setCreateSentenceModalIsOpen] = useState(false);
 
   const openCreateSentenceModal = () => {
@@ -18,6 +20,29 @@ function Navigation({onAddQuote, handleSignOut}) {
     onAddQuote(newSentence);
     closeCreateSentenceModal();
   }
+
+   /* const createNewSentence = async (data) => {
+      try {
+        const newSentence = await api.createSentence(data);
+
+        closeCreateSentenceModal();
+      } catch(error) {
+        console.error(error);
+      }
+    }*/
+
+  /**
+   *   const handleCreateBook = async (data) => {
+    try {
+      const newBook = await api.createBook(data);
+      setBooks(prevBooks => [...prevBooks, newBook.data]);
+      closeCreateModal();
+    }
+    catch(error) {
+      console.error(error);
+    }
+  }
+   */
 
   return (
     <nav>
@@ -69,10 +94,3 @@ function Navigation({onAddQuote, handleSignOut}) {
 }
 
 export default Navigation;
-
-
-/**
- *         <li className='navigation__item'>
-          <button onClick={signOut}>Sair</button>
-        </li>
- */

@@ -5,3 +5,48 @@
 .main__greeting{
     text-align: center;
  }
+
+ .sentence-list{
+    list-style: none;
+    padding: 7px 0 0 0;
+    margin: 0;
+    width: 880px;
+}
+
+.sentence-list__item{
+    font-size: 16px;
+    margin-top: 15px;
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.sentence-list__link {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.sentence-list__icon{
+    cursor: pointer;
+}
+
+.sentence-list__link:hover {
+    color: rgb(202, 228, 251);
+}
+
+.sentence-list__icon:hover{
+   color: rgba(240, 248, 255, 0.407);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1010px) {
+    .sentence-list {
+      width: 590px;
+    }
+  }
+
+@media screen and (min-width: 360px) and (max-width: 767px) {
+    .sentence-list {
+        width: 400px;
+    }
+  }
