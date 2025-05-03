@@ -79,7 +79,7 @@ function Main({ sentences, setSentences }) {
               <Link 
                 className="sentence-list__link" 
                 to="/sentence"
-                state={{ quote }}
+                state={{ quote: quote.content }}
               >
                 {quote.content}
               </Link> 
