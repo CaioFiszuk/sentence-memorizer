@@ -1,9 +1,16 @@
 import './Form.css';
 import Validator from '../Validator/Validator';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function Form({formTitle, placeholder, inputName, buttonName, inputType, initialValue = "", handleForm}){
-
+function Form({
+   formTitle,
+   placeholder,
+   inputName, 
+   buttonName, 
+   inputType, 
+   initialValue = "", 
+   handleForm,
+  }){
   const [value, setValue] = useState(initialValue);
   const [isValid, setIsValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -21,6 +28,10 @@ function Form({formTitle, placeholder, inputName, buttonName, inputType, initial
       handleForm(value);
     }
   };
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
 
   return(
     <form className='form' noValidate onSubmit={handleSubmit}>

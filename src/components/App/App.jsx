@@ -20,26 +20,9 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
 
-  const [selectedQuotes, setSelectedQuotes] = useState([]);
-
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn") === "true");
 
   const navigate = useNavigate();
-
-  /*const handleDeleteQuote = (indexToDelete) => {
-    setSelectedQuotes((prevQuotes) =>
-      prevQuotes.filter((_, index) => index !== indexToDelete)
-    );
-  };*/
-
-  const handleUpdateQuote = (indexToUpdate, newQuote) => {
-    setSelectedQuotes((prevQuotes) => {
-      const updatedQuotes = [...prevQuotes];
-      updatedQuotes[indexToUpdate] = newQuote;
-  
-      return updatedQuotes;
-    });
-  }
 
   const getAllSentences = () => {
     api.getSentences()
@@ -122,8 +105,6 @@ function App() {
                 setSentences={setSentences}
                 />
               <Main 
-                selectedQuotes={selectedQuotes} 
-                onUpdateQuote={handleUpdateQuote}
                 sentences={sentences}
                 setSentences={setSentences}
               />

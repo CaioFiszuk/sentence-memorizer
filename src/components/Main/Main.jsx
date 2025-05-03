@@ -10,19 +10,25 @@ import Form from '../Form/Form';
 import { MdClose } from 'react-icons/md';
 import { api } from '../../utils/api';
 
-function Main({ onUpdateQuote, sentences, setSentences }) {
+function Main({ sentences, setSentences }) {
 
-  const [updateSentenceModalIsOpen, setUpdateSentenceModalIsOpen] = useState(false);
+  const [updateModal, setUpdateModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(null);
-  const [currentQuote, setCurrentQuote] = useState("");
-
   const [selectedSentence, setSelectedSentence] = useState(null);
+  const [updateFormData, setUpdateFormData] = useState({
+    content: '',
+  });
 
-  const openUpdateSentenceModal = (quote, index) => {
-    setCurrentQuote(quote);
-    setCurrentQuoteIndex(index);
-    setUpdateSentenceModalIsOpen(true);
+  const openUpdateModal = (quote) => {
+    setSelectedSentence(quote);
+    setUpdateFormData({
+      content: quote.content,
+    });
+    setUpdateModal(true);
+  }
+
+  const closeUpdateModal = () => {
+    setUpdateModal(false);
   }
 
   const openDeleteModal = (sentence) => {
@@ -34,15 +40,22 @@ function Main({ onUpdateQuote, sentences, setSentences }) {
     setDeleteModal(false);
   }
 
-  const closeUpdateSentenceModal = () => {
-    setUpdateSentenceModalIsOpen(false);
-    setCurrentQuote("");
-    setCurrentQuoteIndex(null);
-  }
+  const handleUpdateSentence = async (newValue) => {
 
-  const handleUpdate = (updatedQuote) => {
-    onUpdateQuote(currentQuoteIndex, updatedQuote);
-    closeUpdateSentenceModal();
+    if(!selectedSentence) return;
+
+    try{
+      const response = await api.updateSentences(selectedSentence._id, { content: newValue });
+      setSentences((prevSentences) =>
+        prevSentences.map((sentence) =>
+          sentence._id === selectedSentence._id ? response.data : sentence
+        )
+      );
+      closeUpdateModal();
+    } catch (error) {
+      console.error("Erro ao atualizar: ", error);
+    }
+
   };
 
   const handleDeleteSentence = async () => {
@@ -76,7 +89,7 @@ function Main({ onUpdateQuote, sentences, setSentences }) {
               />
               <BiPencil 
                 className='sentence-list__icon'
-                onClick={() => openUpdateSentenceModal(quote, index)}
+                onClick={() => openUpdateModal(quote)}
               />
             </li>
           ))}
@@ -91,8 +104,8 @@ function Main({ onUpdateQuote, sentences, setSentences }) {
         </Popup>
 
         <Popup 
-        isOpen={updateSentenceModalIsOpen} 
-        onClose={closeUpdateSentenceModal}>
+        isOpen={updateModal} 
+        onClose={closeUpdateModal}>
          
          <Form 
            formTitle='Editar Frase' 
@@ -100,13 +113,13 @@ function Main({ onUpdateQuote, sentences, setSentences }) {
            inputName='sentence'
            buttonName='Editar'
            inputType='text'
-           initialValue={currentQuote}
-           handleForm={handleUpdate}
+           initialValue={updateFormData.content}
+           handleForm={handleUpdateSentence}
           />
 
         <MdClose 
           className='popup__close-icon'
-          onClick={closeUpdateSentenceModal}
+          onClick={closeUpdateModal}
         />
       </Popup>
       </main>
